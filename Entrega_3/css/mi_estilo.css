@@ -1,0 +1,15 @@
+:root {
+    --mi-lg-width: 200px;                   /*ancho de item del menu en pantalla larga*/
+    --navbar-brand-height: 61px;            /*altura de barra que contiene el logo*/
+    --navbar-maqInfo-height: 78px;          /*altura de barra de informacion de maquina*/
+    --cntndr-menuData-margin-top: 20px;     /*margen superior del contenedor de los datos de maquina*/
+}
+
+
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
+
+.hidden {
+    display: none !important;
+}

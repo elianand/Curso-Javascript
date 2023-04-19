@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    
+        <!--    Logo de pagina      -->
+        <link rel="icon" href="imagenes/ScadaIcon.png" type="image/x-icon" />
+        
+
+        <!--    Mis estilos    -->
+        <link rel="stylesheet" href="css/mi_estilo.css">
+
+
+    </head>
+    <body onload="javascript:CargarMenuInicio()" style="margin: 0px;">
+
+        <nav style="height: var(--navbar-brand-height); padding: 10px; background-color: steelblue;">
+            <img src="imagenes/ScadaIcon.png" style="position: relative; max-height: 100%;">
+        </nav>
+
+
+        <!-- Fondo -->
+        <div style="background-color: white; height: auto;">
+            
+            <!--        Contenedor de inicio   ;        Aqui se listan las maquinas     -->
+            <div id="contenedorInicio" class="" style="display: block;"></div>
+            
+            <!--        Contenedor de menu   ;        Se muestran los datos de la maquina seleccionada     -->
+            <div id="contenedorMenu" class="hidden" style="height: calc(100vh - var(--navbar-brand-height)); display: flex;"> 
+
+                <!--     Menu con pantalla grande       -->
+                <div class="menu-lg " style="width: var(--mi-lg-width); height: 100%; display: flex; flex-direction: column;  padding-left: 5px; padding-right: 0px; opacity: 1; background-color: lightgray;">
+                    
+                    
+                    <div style="position: absolute; margin-left: 6px;">
+                        <a href="" style="width: 100%; display: block;">
+                            <span style="display: block; width: 100%; text-align: center; margin: 10px;">Menu</span>
+                        </a>
+                        <hr>
+                        <ul  style="margin-left: 0px; padding: 10px;">
+                            <li style="display: grid; margin-bottom: 10px">
+                                <button class="mi-re" onclick="ItemMenu_Click(0)">Registro estado</button>
+                            </li>
+                            <li style="display: grid;  margin-bottom: 10px">
+                                <button class="mi-tc" onclick="ItemMenu_Click(1)">Tiempo ciclo</button>
+                            </li>
+                            <li style="display: grid;  margin-bottom: 10px">
+                                <button class="mi-rp" onclick="ItemMenu_Click(2)">Registro producción</button>
+                            </li>
+                            <li style="display: grid;  margin-bottom: 10px">
+                                <button class="mi-es" onclick="ItemMenu_Click(3)">Estado sensores</button>
+                            </li>
+                            <li style="display: grid;  margin-bottom: 10px">
+                                <button class="mi-rv" onclick="ItemMenu_Click(4)">Registro eventos</button>
+                            </li>
+                            <li style="display: grid;  margin-bottom: 10px">
+                                <button class="mi-id" onclick="ItemMenu_Click(5)">Impresión datos</button>
+                            </li>
+                            </ul>
+                        <hr>
+
+                    </div>
+                </div>
+
+                <!--  Div Header + Contenido menu -->
+                <div class="cont-prc" style="height: calc(100vh - var(--navbar-brand-height)); width: calc(100% - var(--mi-lg-width));">
+                    
+                    <!--        HEADER          -->
+                    <div id="header-titulo-estado" style="display: flex; height: var(--navbar-maqInfo-height); background-color: rgb(249, 233, 190);">
+
+                        <!--  Icono para volver al inicio  -->
+                        <button style="float:left; text-align: center; height: 50px; padding: 10px; width: 10%; margin-top: 12px; margin-left: 20px;" aria-current="page" onclick="ItemHeader_Inicio()"><i class="bi bi-box-arrow-left" style="margin-right: 5px;"></i>Inicio</button>
+                        
+                        <p id="header-titulo" style="text-align: center; height: fit-content; width: 70%; margin-top: 22px; "></p>
+                        <div id="header-estado" style="float:right; text-align: center; height: fit-content; padding: 10px; width: 20%; margin-top: 15px; margin-right: 20px;"></div>
+                    </div>
+
+
+                    <!--        Contenido menu      -->
+                    <div id="contenedorMenuData" style="margin-left: 10px; margin-right: 0px; margin-top: var(--cntndr-menuData-margin-top); width: auto; overflow-y: scroll;">
+                        
+                        
+                        <!--        REGISTRO ESTADO          -->
+
+                        <div class="div-reg-est" style="width: auto; height: auto;">
+                            <table class="table" style="text-align: center;  border-style: solid;border-color: lightgray; background-color: white; width: 90%;margin-left: 5%;">
+                                <thead>
+                                <tr>
+                                    <th>Nro</th>
+                                    <th>Estado</th>
+                                    <th>Tiempo inicio</th>
+                                    <th>Duración</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbdy_tabla_reg_est">
+                                    <!--       Elementos generados dinamicamente-->
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                        <!--        TIEMPOS CICLO          -->
+
+                        <div class="div-tmp-ccl hidden" style="width: auto; height: auto; margin-right: 10px;" >
+                            <table class="table" style="text-align: center;  border-style: solid; border-color: lightgray; background-color: white; width: 90%; margin-left: 5%; margin-bottom: 20px;">
+                                <thead>
+                                <tr>
+                                    <th>Nro golpe</th>
+                                    <th>T. inyeccion</th>
+                                    <th>T. carga</th>
+                                    <th>T. succion</th>
+                                    <th>T. molde cerrado</th>
+                                    <th>T. molde abierto</th>
+                                    <th>T. ciclo</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbdy_tabla_tmp_cclo">
+                                    <!--       Elementos generados dinamicamente-->
+                                </tbody>
+                            </table>
+                        </div>
+    
+                        <!--        REGISTRO PRODUCCION          -->
+
+                        <div class="div-reg-prd hidden" style="width: auto; height: auto; margin-right: 10px;">
+                            <table class="table" style="text-align: center; border-style: solid;border-color: lightgray; background-color: white; margin-bottom: 20px; width: 90%; margin-left: 5%;">
+                                <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Turno</th>
+                                    <th>Nro golpes</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbdy_tabla_reg_prod">
+                                    <!--       Elementos generados dinamicamente-->
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!--        ESTADO SENSORES          -->
+                        <h1 class="div-est-sns hidden" style="text-align: center; width: auto; padding-top: 40px!important; padding-bottom: 40px; margin-right: 10px; border-style: solid; border-color: lightgray; background-color: white; margin-bottom: 100vh;">Proximamente, en esta sección se mostrarán el estado de los sensores</h1>
+
+                        <!--        REGISTRO EVENTOS          -->
+                        <h1 class="div-reg-evn hidden" style="text-align: center; width: auto; padding-top: 40px!important; padding-bottom: 40px; margin-right: 10px; border-style: solid; border-color: lightgray; background-color: white; margin-bottom: 100vh;">Proximamente, en esta sección se mostrarán el registro de eventos</h1>
+
+                        <!--        IMPRESION DATOS          -->
+                        <h1 class="div-imp-dts hidden" style="text-align: center; width: auto; padding-top: 40px!important; padding-bottom: 40px; margin-right: 10px; border-style: solid; border-color: lightgray; background-color: white; margin-bottom: 100vh;">Proximamente, apartado para descargar datos</h1>
+
+
+                        <!--            FIN DE MENU         -->
+                    </div>
+                </div>
+            </div>       
+        </div>
+
+        <script src="js/baseDatos.js"></script>
+        <script src="js/definiciones.js"></script>
+        <script src="js/main.js"></script>
+        
+    </body>
+</html>
